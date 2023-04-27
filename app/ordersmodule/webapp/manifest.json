@@ -1,7 +1,7 @@
 {
     "_version": "1.49.0",
     "sap.app": {
-        "id": "NS.orders",
+        "id": "ns.ordersmodule",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -13,7 +13,22 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
             "version": "1.9.4",
-            "toolsId": "578c5c62-7dde-4da1-8e0a-a5a7ca0d1269"
+            "toolsId": "9844910b-e550-4b8d-aba3-fbfa8a221fc3"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "NS-orders-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Orders",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
         },
         "dataSources": {
             "mainService": {
@@ -23,15 +38,6 @@
                     "annotations": [],
                     "localUri": "localService/metadata.xml",
                     "odataVersion": "4.0"
-                }
-            }
-        },
-        "crossNavigation": {
-            "inbounds": {},
-            "outbounds": {
-                "Customers-display": {
-                    "semanticObject": "Customers",
-                    "action": "display"
                 }
             }
         }
@@ -71,7 +77,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "NS.orders.i18n.i18n"
+                    "bundleName": "ns.ordersmodule.i18n.i18n"
                 }
             },
             "": {
@@ -100,12 +106,9 @@
                     "target": "OrdersList"
                 },
                 {
-                    "pattern": "Customers({key}):?query:",
-                    "name": "CustomersObjectPage",
-                    "target": [
-                        "OrdersList",
-                        "CustomersObjectPage"
-                    ]
+                    "pattern": "Orders({key}):?query:",
+                    "name": "OrdersObjectPage",
+                    "target": "OrdersObjectPage"
                 }
             ],
             "targets": {
@@ -118,30 +121,24 @@
                             "entitySet": "Orders",
                             "variantManagement": "Page",
                             "navigation": {
-                                "display": {
-                                    "path": "sap.apps.crossNavigation.outbounds",
-                                    "target": "Customers-display"
+                                "Orders": {
+                                    "detail": {
+                                        "route": "OrdersObjectPage"
+                                    }
                                 }
                             },
                             "initialLoad": "Enabled"
                         }
                     }
                 },
-                "CustomersObjectPage": {
+                "OrdersObjectPage": {
                     "type": "Component",
-                    "id":  "CustomersObjectPage",                  
+                    "id": "OrdersObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
-                        "settings" : {                          
-                            "entitySet" : "Customers",                          
-                            "_tableType" : "Table",                          
-                            "navigation": {                              
-                                "_Publication": {                                  
-                                    "detail": {                                      
-                                        "outbound": "Customers"
-                                    }
-                                }                          
-                            }
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Orders"
                         }
                     }
                 }

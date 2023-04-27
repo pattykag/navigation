@@ -8,7 +8,7 @@ sap.ui.define(['sap/fe/test/ListReport'], function(ListReport) {
 
     return new ListReport(
         {
-            appId: 'NS.orders',
+            appId: 'ns.ordersmodule',
             componentId: 'OrdersList',
             entitySet: 'Orders'
         },

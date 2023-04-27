@@ -1,4 +1,4 @@
 specVersion: "2.5"
 metadata:
-  name: customerns.customers
+  name: ns.ordersmodule
 type: application

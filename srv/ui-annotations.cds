@@ -15,6 +15,18 @@ annotate nav.Customers with {
     name @title: 'Customer'
 };
 
+annotate nav.Customers with @(UI: {
+    HeaderInfo  : {
+        $Type : 'UI.HeaderInfoType',
+        TypeName : 'Customer',
+        TypeNamePlural : 'Customers',
+    },
+    LineItem  : [
+        {Value: name}
+    ],
+});
+
+
 // annotate nav.Customers with @(Common: {
 //     SemanticObject   : 'customer_ID',
 //     AssociationEntity: [order],
@@ -29,7 +41,7 @@ annotate nav.Orders with @(UI: {
     },
     LineItem  : [
         {Value: product},
-        {Value: customer.name},
+        //{Value: customer.name},
         // Navigation to another app
         {
             $Type         : 'UI.DataFieldWithIntentBasedNavigation',

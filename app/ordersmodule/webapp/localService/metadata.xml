@@ -84,6 +84,9 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="product"/>
                         </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="customer/name"/>
+                        </Record>
                         <Record Type="UI.DataFieldWithIntentBasedNavigation">
                             <PropertyValue Property="Value" Path="customer/name"/>
                             <PropertyValue Property="SemanticObject" String="Customers"/>

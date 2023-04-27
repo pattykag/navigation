@@ -17,10 +17,13 @@
     "start": "cds-serve",
     "watch-customers": "cds watch --open customers/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-orders": "cds watch --open orders/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-customer": "cds watch --open customer/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-customer": "cds watch --open customer/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-ordersmodule": "cds watch --open ordersmodule/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
     "app/customers",
-    "app/orders"
+    "app/orders",
+    "app/ordersmodule",
+    "app/customers"
   ]
 }

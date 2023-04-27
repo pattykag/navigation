@@ -1,23 +1,23 @@
 sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
-        'ns/customers/test/integration/FirstJourney',
-		'ns/customers/test/integration/pages/CustomersObjectPage',
-		'ns/customers/test/integration/pages/OrdersObjectPage'
+        'customerns/customers/test/integration/FirstJourney',
+		'customerns/customers/test/integration/pages/CustomersList',
+		'customerns/customers/test/integration/pages/CustomersObjectPage'
     ],
-    function(JourneyRunner, opaJourney, CustomersObjectPage, OrdersObjectPage) {
+    function(JourneyRunner, opaJourney, CustomersList, CustomersObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
-            launchUrl: sap.ui.require.toUrl('ns/customers') + '/index.html'
+            launchUrl: sap.ui.require.toUrl('customerns/customers') + '/index.html'
         });
 
        
         JourneyRunner.run(
             {
                 pages: { 
-					onTheCustomersObjectPage: CustomersObjectPage,
-					onTheOrdersObjectPage: OrdersObjectPage
+					onTheCustomersList: CustomersList,
+					onTheCustomersObjectPage: CustomersObjectPage
                 }
             },
             opaJourney.run

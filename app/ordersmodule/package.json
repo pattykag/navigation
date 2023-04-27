@@ -1,7 +1,7 @@
 {
-    "name": "orders",
+    "name": "ordersmodule",
     "version": "0.0.1",
-    "description": "Orders",
+    "description": "",
     "keywords": [
         "ui5",
         "openui5",

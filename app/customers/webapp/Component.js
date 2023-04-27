@@ -3,20 +3,9 @@ sap.ui.define(
     function (Component) {
         "use strict";
 
-        return Component.extend("ns.customers.Component", {
+        return Component.extend("customerns.customers.Component", {
             metadata: {
                 manifest: "json"
-            },
-
-            /**
-             * Gets the component startup parameters, setting preferredMode to 'create'.
-             * @public
-             * @returns 
-             */
-            getStartupParameters: function() {
-                return Promise.resolve({
-                    preferredMode: ["create"]
-                });
             }
         });
     }

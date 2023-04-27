@@ -1,27 +1,27 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Apr 24 2023 14:50:21 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Thu Apr 27 2023 21:06:33 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.9.4|
 |**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>Form Entry Object Page V4|
+|**Template Used**<br>List Report Page V4|
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/navigation/
 |**Module Name**<br>customers|
-|**Application Title**<br>Customers|
-|**Namespace**<br>ns|
+|**Application Title**<br>Customers List|
+|**Namespace**<br>customerns|
 |**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.111.0|
+|**UI5 Version**<br>1.111.1|
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
 |**Main Entity**<br>Customers|
-|**Navigation Entity**<br>order|
+|**Navigation Entity**<br>None|
 
 ## customers
 
-Customers
+
 
 ### Starting the generated app
 
