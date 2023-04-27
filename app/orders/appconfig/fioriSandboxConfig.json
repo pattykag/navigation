@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Customers-display": {
+            "additionalInformation": "SAPUI5.Component=ns.customers",
+            "applicationType": "URL",
+            "url": "../resources/ns.customers"
+        },
+        "Orders-display": {
+            "additionalInformation": "SAPUI5.Component=ns.orders",
+            "applicationType": "URL",
+            "url": "../resources/ns.orders"
+        }
+    }
+}
