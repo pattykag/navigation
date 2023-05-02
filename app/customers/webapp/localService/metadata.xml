@@ -101,6 +101,21 @@
             <Annotations Target="navigation.Orders/customer_ID">
                 <Annotation Term="Common.Label" String="Customer"/>
             </Annotations>
+            <Annotations Target="navigation.Customers">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Customer"/>
+                        <PropertyValue Property="TypeNamePlural" String="Customers"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
             <Annotations Target="navigation.EntityContainer/Customers">
                 <Annotation Term="Common.DraftRoot">
                     <Record Type="Common.DraftRootType">

@@ -1,29 +1,51 @@
 {
-  "name": "navigation",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^6",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.108.3",
-    "sqlite3": "^5"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-customers": "cds watch --open customers/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-orders": "cds watch --open orders/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-customer": "cds watch --open customer/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-ordersmodule": "cds watch --open ordersmodule/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "sapux": [
-    "app/customers",
-    "app/orders",
-    "app/ordersmodule",
-    "app/customers"
-  ]
+    "name": "navigation",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "hdb": "^0.19.0",
+        "passport": "^0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.3",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-ordersmodule": "cds watch --open ordersmodule/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy navigation --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "deploy-p": "npm i && mbt build && cf deploy mta_archives/navigation_1.0.0.mtar --retries 1",
+        "watch-customers": "cds watch --open customers/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "cds": {
+        "requires": {
+            "auth": {
+                "kind": "xsuaa"
+            },
+            "[production": {
+                "db": {
+                    "kind": "hana-cloud"
+                }
+            },
+            "db": {
+                "kind": "sql"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    },
+    "sapux": [
+        "app/ordersmodule",
+        "app/customers"
+    ]
 }

@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Apr 27 2023 20:54:32 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Tue May 02 2023 12:46:11 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.9.4|
 |**Generation Platform**<br>SAP Business Application Studio|
@@ -12,7 +12,7 @@
 |**Application Title**<br>Orders List|
 |**Namespace**<br>ns|
 |**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.113.0|
+|**UI5 Version**<br>1.111.0|
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|

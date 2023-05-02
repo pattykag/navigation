@@ -1,0 +1,150 @@
+_schema-version: "3.1"
+ID: navigation
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: navigation-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: navigation-db
+  - name: navigation-auth
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: navigation-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: navigation-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: navigation-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: navigation-destination-service
+    parameters:
+      content-target: true
+  - name: navigation_html_repo_host
+    parameters:
+      service-key:
+        name: navigation_html_repo_host-key
+  - name: navigation-auth
+    parameters:
+      service-key:
+        name: navigation-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: navroute_navigation_html_repo_host
+          ServiceInstanceName: navigation-html5-app-host-service
+          ServiceKeyName: navigation_html_repo_host-key
+          sap.cloud.service: navroute
+        - Authentication: OAuth2UserTokenExchange
+          Name: navroute_navigation_auth
+          ServiceInstanceName: navigation-auth
+          ServiceKeyName: navigation-auth-key
+          sap.cloud.service: navroute
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: navigation-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: navigation_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - nsordersmodule.zip
+      name: nsordersmodule
+      target-path: resources/
+    - artifacts:
+      - customernscustomers.zip
+      name: customernscustomers
+      target-path: resources/
+- name: nsordersmodule
+  type: html5
+  path: app/ordersmodule
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: customernscustomers
+  type: html5
+  path: app/customers
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: navigation-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: navigation-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: navigation-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: navigation-destination-service
+  type: org.cloudfoundry.managed-service
+  requires:
+    - name: srv-api
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Name: navigation-dest
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+            HTML5.ForwardAuthToken: true
+            HTML5.DynamicDestination: true
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: navigation-destination-service
+    service-plan: lite
+- name: navigation_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: navigation-html5-app-host-service
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx -p @sap/cds-dk cds build --production

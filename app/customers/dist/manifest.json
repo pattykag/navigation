@@ -1,7 +1,7 @@
 {
     "_version": "1.49.0",
     "sap.app": {
-        "id": "ns.ordersmodule",
+        "id": "customerns.customers",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -13,11 +13,11 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
             "version": "1.9.4",
-            "toolsId": "f5455325-978d-44e8-af13-0e112a0f15ac"
+            "toolsId": "f7acc9d1-95d8-4dfd-aedc-352bc355ce54"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/navigation/",
+                "uri": "navigation/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -28,23 +28,16 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "ns-ordersmodule-inbound": {
+                "customerns-customers-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Orders",
+                    "semanticObject": "Customers",
                     "action": "display",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
                     "icon": ""
-                }
-            },
-            "outbounds": {
-                "NS-orders-outbound": {
-                    "semanticObject": "Customers",
-                    "action": "display",
-                    "parameters": {}
                 }
             }
         }
@@ -68,7 +61,7 @@
     "sap.ui5": {
         "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.111.0",
+            "minUI5Version": "1.113.0",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -84,7 +77,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "ns.ordersmodule.i18n.i18n"
+                    "bundleName": "customerns.customers.i18n.i18n"
                 }
             },
             "": {
@@ -109,28 +102,28 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "OrdersList",
-                    "target": "OrdersList"
+                    "name": "CustomersList",
+                    "target": "CustomersList"
                 },
                 {
-                    "pattern": "Orders({key}):?query:",
-                    "name": "OrdersObjectPage",
-                    "target": "OrdersObjectPage"
+                    "pattern": "Customers({key}):?query:",
+                    "name": "CustomersObjectPage",
+                    "target": "CustomersObjectPage"
                 }
             ],
             "targets": {
-                "OrdersList": {
+                "CustomersList": {
                     "type": "Component",
-                    "id": "OrdersList",
+                    "id": "CustomersList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "Orders",
+                            "entitySet": "Customers",
                             "variantManagement": "Page",
                             "navigation": {
-                                "Orders": {
+                                "Customers": {
                                     "detail": {
-                                        "route": "OrdersObjectPage"
+                                        "route": "CustomersObjectPage"
                                     }
                                 }
                             },
@@ -138,14 +131,14 @@
                         }
                     }
                 },
-                "OrdersObjectPage": {
+                "CustomersObjectPage": {
                     "type": "Component",
-                    "id": "OrdersObjectPage",
+                    "id": "CustomersObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Orders"
+                            "entitySet": "Customers"
                         }
                     }
                 }

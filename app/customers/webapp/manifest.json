@@ -13,7 +13,7 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
             "version": "1.9.4",
-            "toolsId": "c60ed421-ec5b-4c44-b333-d36331c92af3"
+            "toolsId": "f7acc9d1-95d8-4dfd-aedc-352bc355ce54"
         },
         "dataSources": {
             "mainService": {
@@ -61,7 +61,7 @@
     "sap.ui5": {
         "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.111.1",
+            "minUI5Version": "1.113.0",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -153,5 +153,9 @@
     "sap.fiori": {
         "registrationIds": [],
         "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "navroute"
     }
 }
