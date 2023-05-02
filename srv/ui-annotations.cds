@@ -32,10 +32,10 @@ annotate nav.Customers with @(UI: {
 //     AssociationEntity: [order],
 // });
 
-annotate nav.Customers with {
-    @Commmon.SemanticObject: 'MySemanticObject'
-    name
-}
+// annotate nav.Customers with {
+//     @Commmon.SemanticObject: 'MySemanticObject'
+//     name
+// }
 
 annotate nav.Orders with @(UI: {
     HeaderInfo: {
@@ -50,9 +50,13 @@ annotate nav.Orders with @(UI: {
         {
             $Type         : 'UI.DataFieldWithIntentBasedNavigation',
             //Value         : customer.name,
-            Value         : customer.name,
+            Value         : customer_ID,
             SemanticObject: 'Customers',
-            Action        : 'display'
+            Action        : 'display',
+            // Mapping: [{
+            //     LocalProperty : customer_ID,
+            //     SemanticObjectProperty : 'ID',
+            // }]
         }
         // {
         //     $Type: 'UI.DataFieldWithUrl',
