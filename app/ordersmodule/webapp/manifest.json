@@ -144,8 +144,15 @@
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
-                            "editableHeaderContent": false,
-                            "entitySet": "Orders"
+                            "entitySet": "Orders",
+                            "_tableType": "Table",
+                            "navigation": {
+                                "Customers_Publication": {
+                                    "detail": {
+                                        "outbound": "Customers"
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -43,12 +43,22 @@ annotate nav.Orders with @(UI: {
         TypeName      : 'Order',
         TypeNamePlural: 'Orders',
     },
+    // FieldGroup  : {
+    //     $Type : 'UI.FieldGroupType',
+    //     Data:[{
+    //         $Type: 'UI.DataFieldWithIntentBasedNavigation',
+    //         Label : 'Ref. Sales Order',
+    //         Value : customer.name,
+    //         SemanticObject: 'Customer'            
+    //     }]
+    // },
     LineItem  : [
         {Value: product},
         //{Value: customer.name},
         // Navigation to another app
         {
-            $Type         : 'UI.DataFieldWithIntentBasedNavigation',
+            //$Type         : 'UI.DataFieldWithNavigationPath',
+            $Type: 'UI.DataFieldWithIntentBasedNavigation',
             //Value         : customer.name,
             Value         : customer_ID,
             SemanticObject: 'Customers',
@@ -74,60 +84,3 @@ annotate nav.Orders with @(UI: {
     // }
     ],
 });
-
-// annotate nav.Customers with @(UI: {HeaderInfo: {
-//     $Type         : 'UI.HeaderInfoType',
-//     TypeName      : 'Customer',
-//     TypeNamePlural: 'Customers',
-//     Title         : {
-//         $Type: 'UI.DataField',
-//         Value: ID
-//     },
-//     Description   : {
-//         $Type: 'UI.DataField',
-//         Value: name
-//     },
-//     Facets           : [{
-//         $Type  : 'UI.ReferenceFacet',
-//         Label  : '{i18n>facetsTitle}',
-//         Target : '@UI.FieldGroup#Main'
-//     }],
-//     FieldGroup #Main : {Data : [
-//         {Value : name}
-//     ]}
-// },
-// LineItem  : [
-//     {Value: ID},
-//     {Value: name}
-// ],
-// });
-
-// annotate nav.Customers with @(UI: {
-//     HeaderInfo: {
-//         $Type         : 'UI.HeaderInfoType',
-//         TypeName      : 'Customer',
-//         TypeNamePlural: 'Customers',
-//     },
-//     LineItem  : [
-//         {Value: name},
-//         // Navigation in the table
-//         {
-//             $Type: 'UI.DataFieldWithIntentBasedNavigation',
-//             Value : order.product,
-//             SemanticObject : 'Orders',
-//             Action : 'display',
-//         }
-//     ],
-// });
-
-// annotate nav.Orders with @(UI: {
-//     HeaderInfo  : {
-//         $Type : 'UI.HeaderInfoType',
-//         TypeName : 'Order',
-//         TypeNamePlural : 'Orders',
-//     },
-//     LineItem  : [
-//         //{Value: ID},
-//         {Value: product}
-//     ],
-// });
